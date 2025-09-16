@@ -15,6 +15,15 @@ datasource db {
 }
 
 model Eventos {
-  id        String   @id @default(uuid())
-  name      String
+  id_evento        String   @id @default(uuid())
+  id_casa          String
+  titulo           String
+  descricao        String
+  data_inicio      String
+  data_fim         String
+  idade_minima     String
+  visibilidade     String
+  status           String
+  created_at       String
+  updated_at       String
 }
