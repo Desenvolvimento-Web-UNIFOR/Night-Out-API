@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -8,32 +8,64 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Eventos {
-  id_evento     String            @id @default(uuid())
-  titulo        String
-  descricao     String
-  data_inicio   DateTime
-  data_fim      DateTime
-  idade_minima  String
-  visibilidade  String
-  status        String
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
+model Evento {
+  id_evento   String   @id @default(uuid())
+  id_usuario  String
+  titulo      String
+  descricao   String?
+  data_inicio DateTime
+  data_fim    DateTime
+  local       String
+  status      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  artistas      EventoArtista[]  
+  propostasCasa     PropostaCasa[]
+  propostasArtista  PropostaArtista[]
+  eventoArtistas    EventoArtista[]
+}
+
+model PropostaCasa {
+  id_proposta_casa String   @id @default(uuid())
+  id_artista       String
+  id_evento        String?
+  data_proposta    DateTime
+  data_evento      DateTime
+  valor_ofertado   String
+  status           String
+  termos           String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  evento   Evento? @relation(fields: [id_evento], references: [id_evento])
+}
+
+model PropostaArtista {
+  id_proposta_artista String   @id @default(uuid())
+  id_casa             String
+  id_evento           String?
+  data_proposta       DateTime
+  data_evento         DateTime
+  valor_ofertado      String
+  status              String
+  termos              String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  evento   Evento? @relation(fields: [id_evento], references: [id_evento])
 }
 
 model EventoArtista {
-  id             String   @id @default(uuid())
-  id_evento      String
-  id_artista     String    // ID externo do artista (vem de outro microserviço)
+  id_evento         String
+  id_usuario        String
+  funcao            String
+  contrato_acordado String?
+  cache_final       String?
+  created_final     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
-  funcao         String
-  cache_acordado String
-  ordem          String
-  principal      Boolean   @default(false)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  @@id([id_evento, id_usuario])
 
-  evento         Eventos   @relation(fields: [id_evento], references: [id_evento])
+  evento Evento @relation(fields: [id_evento], references: [id_evento])
 }
