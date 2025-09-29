@@ -28,7 +28,7 @@ model Evento {
 model PropostaCasa {
   id_proposta_casa String   @id @default(uuid())
   id_artista       String
-  id_evento        String?
+  id_evento        String
   data_proposta    DateTime
   data_evento      DateTime
   valor_ofertado   String
@@ -37,13 +37,13 @@ model PropostaCasa {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
-  evento   Evento? @relation(fields: [id_evento], references: [id_evento])
+  evento Evento @relation(fields: [id_evento], references: [id_evento])
 }
 
 model PropostaArtista {
   id_proposta_artista String   @id @default(uuid())
   id_casa             String
-  id_evento           String?
+  id_evento           String
   data_proposta       DateTime
   data_evento         DateTime
   valor_ofertado      String
@@ -52,7 +52,7 @@ model PropostaArtista {
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 
-  evento   Evento? @relation(fields: [id_evento], references: [id_evento])
+  evento Evento @relation(fields: [id_evento], references: [id_evento])
 }
 
 model EventoArtista {

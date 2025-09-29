@@ -1,4 +1,4 @@
-fekfhdeufndjkfndgenerator client {
+generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
@@ -9,16 +9,18 @@ datasource db {
 }
 
 model LoteIngresso {
-  id_lote    String   @id @default(uuid())
-  id_evento  String
-  nome       String
-  preco      String
-  quantidade String
+  id_lote     String   @id @default(uuid())
+  id_evento   String
+  nome        String
+  preco       String
+  quantidade  String
   qtd_vendida String
   data_inicio DateTime
   data_fim    DateTime
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  ingressos   Ingresso[]
 }
 
 model Ingresso {
@@ -31,7 +33,8 @@ model Ingresso {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  pagamento    PagamentoIngresso?
+  lote        LoteIngresso      @relation(fields: [id_lote], references: [id_lote])
+  pagamento   PagamentoIngresso?
 }
 
 model PagamentoIngresso {
@@ -43,5 +46,5 @@ model PagamentoIngresso {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  ingresso Ingresso @relation(fields: [id_ingresso], references: [id_ingresso])
+  ingresso     Ingresso @relation(fields: [id_ingresso], references: [id_ingresso])
 }
