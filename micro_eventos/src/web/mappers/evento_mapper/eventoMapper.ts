@@ -1,4 +1,4 @@
-import type eventoDTO = require("../types/evento_dtos/eventoDTO");
+import type eventoDTO = require("../../types/evento_dtos/eventoDTO");
 import { Evento } from "@prisma/client";
 
 export async function toForm(

@@ -1,4 +1,4 @@
-import { PagamentoIngressoDTO } from "../types/pagamento_ingresso_dtos/pagamentoIngressoDTO";
+import { PagamentoIngressoDTO } from "../../types/pagamento_ingresso_dtos/pagamentoIngressoDTO";
 import { PagamentoIngresso } from "@prisma/client";
 export async function toForm(
   pagamentoIngresso: PagamentoIngresso
