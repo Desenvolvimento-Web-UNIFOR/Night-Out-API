@@ -1,78 +1,72 @@
 import { prisma } from "../../libs/prismaClient";
 
 export async function cadastro(dados: {
-  name: string;
+  nome: string;
   email: string;
-  password: string;
-  hash: string;
-  phone: string;
+  senha: string;
+  telefone?: string;
   nome_fantasia: string;
-  cpf: string;
+  cnpj: string;
   capacidade: string;
-  cep: string;
-  logradouro: string;
-  numero: string;
-  complemento: string;
+  endereco: string;
   bairro: string;
-  cidade: string;
-  uf: string;
+  estado: string;
+  cep: string;
   geo_lat: string;
   geo_lng: string;
 }): Promise<any> {
   try {
-    const novaCasa = await prisma.casaDeShow.create({
+    const novaCasa = await prisma.casaShow.create({
       data: {
         nome_fantasia: dados.nome_fantasia,
-        cpf: dados.cpf,
+        cnpj: dados.cnpj,
         capacidade: dados.capacidade,
-        cep: dados.cep,
-        logradouro: dados.logradouro,
-        numero: dados.numero,
-        complemento: dados.complemento,
+        endereco: dados.endereco,
         bairro: dados.bairro,
-        cidade: dados.cidade,
-        uf: dados.uf,
+        estado: dados.estado,
+        cep: dados.cep,
         geo_lat: dados.geo_lat,
         geo_lng: dados.geo_lng,
-        user: {
+        usuario: {
           create: {
-            name: dados.name,
+            nome: dados.nome,
             email: dados.email,
-            password: dados.password,
-            hash: dados.hash,
-            phone: dados.phone,
+            senha_hash: dados.senha,
+            telefone: dados.telefone,
+            tipo: "CASASHOW",
           },
         },
       },
       include: {
-        user: true,
+        usuario: true,
       },
     });
 
     return {
-      id: novaCasa.id,
-      name: novaCasa.user.name,
-      email: novaCasa.user.email,
-      phone: novaCasa.user.phone,
+      id: novaCasa.id_usuario,
+      nome: novaCasa.usuario.nome,
+      email: novaCasa.usuario.email,
+      telefone: novaCasa.usuario.telefone,
       nome_fantasia: novaCasa.nome_fantasia,
-      cidade: novaCasa.cidade,
       capacidade: novaCasa.capacidade,
+      cidade: novaCasa.estado,
     };
   } catch (error) {
     throw new Error("Erro ao cadastrar casa de show: " + error);
   }
 }
 
-export async function login(email: string, password: string) {
-  const casa = await prisma.casaDeShow.findFirst({
+export async function login(email: string, senha: string) {
+  const casa = await prisma.casaShow.findFirst({
     where: {
-      user: {
+      usuario: {
         email,
-        password,
+        senha_hash: senha,
+        tipo: "CASASHOW",
       },
     },
     include: {
-      user: true,
+      usuario: true,
     },
   });
 
@@ -83,10 +77,10 @@ export async function login(email: string, password: string) {
   return {
     message: "Casa de show logada com sucesso",
     casa: {
-      id: casa.id,
-      name: casa.user.name,
-      email: casa.user.email,
-      phone: casa.user.phone,
+      id: casa.id_usuario,
+      nome: casa.usuario.nome,
+      email: casa.usuario.email,
+      telefone: casa.usuario.telefone,
       nome_fantasia: casa.nome_fantasia,
     },
   };

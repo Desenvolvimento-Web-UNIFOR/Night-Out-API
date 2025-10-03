@@ -1,65 +1,65 @@
 import { prisma } from "../../libs/prismaClient";
 
 export async function cadastro(dados: {
-  name: string;
+  nome: string;
   email: string;
-  password: string;
-  hash: string;
-  phone: string;
-  nome_artistico: string;
+  senha: string;
+  telefone?: string;
+  nome_artista: string;
   genero_musical: string;
   cache_min: string;
-  bio: string;
-  url_portfolio: string;
+  descricao?: string;
+  portifolio?: string;
 }): Promise<any> {
   try {
     const novoArtista = await prisma.artista.create({
       data: {
-        nome_artistico: dados.nome_artistico,
+        nome_artista: dados.nome_artista,
         genero_musical: dados.genero_musical,
         cache_min: dados.cache_min,
-        bio: dados.bio,
-        url_portfolio: dados.url_portfolio,
-        user: {
+        descricao: dados.descricao,
+        portifolio: dados.portifolio,
+        usuario: {
           create: {
-            name: dados.name,
+            nome: dados.nome,
             email: dados.email,
-            password: dados.password,
-            hash: dados.hash,
-            phone: dados.phone,
+            senha_hash: dados.senha,
+            telefone: dados.telefone,
+            tipo: "ARTISTA",
           },
         },
       },
       include: {
-        user: true,
+        usuario: true,
       },
     });
 
     return {
-      id: novoArtista.id,
-      name: novoArtista.user.name,
-      email: novoArtista.user.email,
-      phone: novoArtista.user.phone,
-      nome_artistico: novoArtista.nome_artistico,
+      id: novoArtista.id_usuario,
+      nome: novoArtista.usuario.nome,
+      email: novoArtista.usuario.email,
+      telefone: novoArtista.usuario.telefone,
+      nome_artista: novoArtista.nome_artista,
       genero_musical: novoArtista.genero_musical,
-      bio: novoArtista.bio,
-      url_portfolio: novoArtista.url_portfolio,
+      descricao: novoArtista.descricao,
+      portifolio: novoArtista.portifolio,
     };
   } catch (error) {
     throw new Error("Erro ao cadastrar artista: " + error);
   }
 }
 
-export async function login(email: string, password: string) {
+export async function login(email: string, senha: string) {
   const artista = await prisma.artista.findFirst({
     where: {
-      user: {
+      usuario: {
         email,
-        password,
+        senha_hash: senha,
+        tipo: "ARTISTA",
       },
     },
     include: {
-      user: true,
+      usuario: true,
     },
   });
 
@@ -70,11 +70,11 @@ export async function login(email: string, password: string) {
   return {
     message: "Artista logado com sucesso",
     artista: {
-      id: artista.id,
-      name: artista.user.name,
-      email: artista.user.email,
-      phone: artista.user.phone,
-      nome_artistico: artista.nome_artistico,
+      id: artista.id_usuario,
+      nome: artista.usuario.nome,
+      email: artista.usuario.email,
+      telefone: artista.usuario.telefone,
+      nome_artista: artista.nome_artista,
     },
   };
 }

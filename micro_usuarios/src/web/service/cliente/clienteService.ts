@@ -1,14 +1,13 @@
 import { prisma } from "../../libs/prismaClient";
 
 export async function cadastro(dados: {
-  name: string;
+  nome: string;
   email: string;
-  password: string;
-  hash: string;
-  phone: string;
-  apelido: string;
-  preferencias: string;
-  data_nascimento: string;
+  senha: string;
+  telefone?: string;
+  apelido?: string;
+  preferencias?: string;
+  data_nascimento?: Date;
 }): Promise<any> {
   try {
     const novoCliente = await prisma.cliente.create({
@@ -16,46 +15,47 @@ export async function cadastro(dados: {
         apelido: dados.apelido,
         preferencias: dados.preferencias,
         data_nascimento: dados.data_nascimento,
-        user: {
+        usuario: {
           create: {
-            name: dados.name,
+            nome: dados.nome,
             email: dados.email,
-            password: dados.password,
-            hash: dados.hash,
-            phone: dados.phone,
+            senha_hash: dados.senha,
+            telefone: dados.telefone,
+            tipo: "CLIENTE",
           },
         },
       },
       include: {
-        user: true,
+        usuario: true,
       },
     });
 
     return {
-      id: novoCliente.id,
-      name: novoCliente.user.name,
-      email: novoCliente.user.email,
-      phone: novoCliente.user.phone,
+      id: novoCliente.id_usuario,
+      nome: novoCliente.usuario.nome,
+      email: novoCliente.usuario.email,
+      telefone: novoCliente.usuario.telefone,
       apelido: novoCliente.apelido,
       preferencias: novoCliente.preferencias,
       data_nascimento: novoCliente.data_nascimento,
-      createdAt: novoCliente.user.createdAt,
+      createdAt: novoCliente.usuario.createdAt,
     };
   } catch (error) {
     throw new Error("Erro ao cadastrar cliente: " + error);
   }
 }
 
-export async function login(email: string, password: string) {
+export async function login(email: string, senha: string) {
   const cliente = await prisma.cliente.findFirst({
     where: {
-      user: {
+      usuario: {
         email,
-        password,
+        senha_hash: senha,
+        tipo: "CLIENTE",
       },
     },
     include: {
-      user: true,
+      usuario: true,
     },
   });
 
@@ -66,10 +66,10 @@ export async function login(email: string, password: string) {
   return {
     message: "Cliente logado com sucesso",
     cliente: {
-      id: cliente.id,
-      name: cliente.user.name,
-      email: cliente.user.email,
-      phone: cliente.user.phone,
+      id: cliente.id_usuario,
+      nome: cliente.usuario.nome,
+      email: cliente.usuario.email,
+      telefone: cliente.usuario.telefone,
     },
   };
 }
