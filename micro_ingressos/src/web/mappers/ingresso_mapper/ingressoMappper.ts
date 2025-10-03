@@ -1,5 +1,5 @@
 import { Ingresso } from "@prisma/client";
-import type { IngressoDTO } from "../types/ingresso_dtos/ingressoDTO"; 
+import type { IngressoDTO } from "../../types/ingresso_dtos/ingressoDTO"; 
 
 export async function toForm(
   ingresso: Ingresso
