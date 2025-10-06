@@ -161,5 +161,3 @@ export async function deletarCliente(id_cliente: string) {
 
   return { message: "Cliente deletado com sucesso!" };
 }
-
-

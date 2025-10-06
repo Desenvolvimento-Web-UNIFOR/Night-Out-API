@@ -1,9 +1,19 @@
 import { prisma } from "../../libs/prismaClient";
 import { AdministradorDTO } from "../../types/administrador_dtos/administradorDTO";
 
-export async function login(email: string, senha: string) {
-  const message = "Administrador logado com sucesso";
+function toAdministradorDTO(adm: any) {
+  return {
+    id: adm.id_usuario,
+    nome: adm.usuario.nome,
+    email: adm.usuario.email,
+    telefone: adm.usuario.telefone,
+    cargo: adm.cargo,
+    permissao_nivel: adm.permissao_nivel,
+    createdAt: adm.usuario.createdAt,
+  };
+}
 
+export async function login(email: string, senha: string) {
   const administrador = await prisma.administrador.findFirst({
     where: {
       usuario: {
@@ -22,15 +32,12 @@ export async function login(email: string, senha: string) {
   }
 
   return {
-    message,
-    id: administrador.id_usuario,
-    nome: administrador.usuario.nome,
-    email: administrador.usuario.email,
-    telefone: administrador.usuario.telefone,
+    message: "Administrador logado com sucesso",
+    ...toAdministradorDTO(administrador),
   };
 }
 
-export async function cadastro(dados: {
+export async function criarAdministrador(dados: {
   nome: string;
   email: string;
   senha: string;
@@ -58,15 +65,9 @@ export async function cadastro(dados: {
       },
     });
 
-    return {
-      id: novoAdministrador.id_usuario,
-      nome: novoAdministrador.usuario.nome,
-      email: novoAdministrador.usuario.email,
-      telefone: novoAdministrador.usuario.telefone,
-      createdAt: novoAdministrador.usuario.createdAt,
-    };
+    return toAdministradorDTO(novoAdministrador);
   } catch (error) {
-    throw new Error("Erro ao cadastrar administrador: " + error);
+    throw new Error(`Erro ao cadastrar administrador: ${(error as Error).message}`);
   }
 }
 
@@ -77,44 +78,19 @@ export async function listarAdministradores() {
     },
   });
 
-  return listaAdmins.map((admin) => {
-    return {
-      id: admin.id_usuario,
-      nome: admin.usuario.nome,
-      email: admin.usuario.email,
-    };
-  });
+  return listaAdmins.map(toAdministradorDTO);
 }
 
 export async function buscarAdministradorPorId(id: string) {
   const adm = await prisma.administrador.findUnique({
     where: { id_usuario: id },
-  });
-
-  return adm;
-}
-
-export async function cadastrarADM(admDTO: AdministradorDTO) {
-  const novoADM = await prisma.administrador.create({
-    data: {
-      cargo: admDTO.cargo,
-      permissao_nivel: admDTO.permissao_nivel,
-      usuario: {
-        create: {
-          nome: admDTO.usuario[0].nome,
-          email: admDTO.usuario[0].email,
-          senha_hash: admDTO.usuario[0].senha_hash,
-          telefone: admDTO.usuario[0].telefone,
-          tipo: "ADMINISTRADOR",
-        },
-      },
-    },
     include: { usuario: true },
   });
 
-  return novoADM;
-}
+  if (!adm) throw new Error("Administrador não encontrado");
 
+  return toAdministradorDTO(adm);
+}
 
 export async function editarADM(id_administrador: string, admDTO: AdministradorDTO) {
   try {
@@ -127,18 +103,17 @@ export async function editarADM(id_administrador: string, admDTO: AdministradorD
           update: {
             nome: admDTO.usuario[0].nome,
             email: admDTO.usuario[0].email,
-            senha_hash: admDTO.usuario[0].senha_hash,
             telefone: admDTO.usuario[0].telefone,
+            senha_hash: admDTO.usuario[0].senha_hash,
           },
         },
       },
       include: { usuario: true },
     });
 
-    return admAtualizado;
+    return toAdministradorDTO(admAtualizado);
   } catch (error) {
-    console.error("Erro ao editar administrador:", error);
-    throw error;
+    throw new Error(`Erro ao editar administrador: ${(error as Error).message}`);
   }
 }
 
@@ -151,18 +126,12 @@ export async function deletarADM(id_administrador: string) {
 
     if (!adm) throw new Error("Administrador não encontrado.");
 
-    await prisma.usuario.delete({
-      where: { id_usuario: adm.usuario.id_usuario },
-    });
-
     await prisma.administrador.delete({
       where: { id_usuario: id_administrador },
     });
 
     return { message: "Administrador deletado com sucesso!" };
   } catch (error) {
-    console.error("Erro ao deletar administrador:", error);
-    throw error;
+    throw new Error(`Erro ao deletar administrador: ${(error as Error).message}`);
   }
 }
-
