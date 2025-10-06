@@ -4,16 +4,16 @@ import * as admLoginService from "../../service/adm/admService";
 export const login: RequestHandler = async (req, res) => {
   try {
     const email = String(req.body.email);
-    const password = String(req.body.password);
+    const senha = String(req.body.senha);
 
-    const result = await admLoginService.login(email, password);
+    const result = await admLoginService.login(email, senha);
 
     if (!result) {
       res.status(401).json({ message: "Email ou senha inválidos!" });
       return;
     }
 
-    res.status(200).json({ message: result });
+    res.status(200).json(result);
   } catch (e) {
     res.status(500).json({
       message: `Erro de login: ${e}`,
@@ -23,17 +23,15 @@ export const login: RequestHandler = async (req, res) => {
 
 export const cadastro: RequestHandler = async (req, res) => {
   try {
-    const { name, email, password, hash, phone, cargo, permissao_notes } =
-      req.body;
+    const { nome, email, senha, telefone, cargo, permissao_nivel } = req.body;
 
-    const novoUsuario = await admLoginService.cadastro({
-      name,
+    const novoUsuario = await admLoginService.criarAdministrador({
+      nome,
       email,
-      password,
-      hash,
-      phone,
+      senha,
+      telefone,
       cargo,
-      permissao_notes,
+      permissao_nivel,
     });
 
     res.status(201).json({
