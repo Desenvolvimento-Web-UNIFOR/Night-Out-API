@@ -1,4 +1,4 @@
-import { PropostaArtistaDTO } from "../types/proposta_artista_dtos/propostaArtistaDTO";
+import { PropostaArtistaDTO } from "../../types/proposta_artista_dtos/propostaArtistaDTO";
 import { PropostaArtista } from "../../models/PropostaArtista";
 export async function toForm(
   evento: PropostaArtista

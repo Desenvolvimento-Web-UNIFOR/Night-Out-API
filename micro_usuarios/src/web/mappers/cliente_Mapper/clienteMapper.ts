@@ -1,5 +1,5 @@
 import { Cliente } from "@prisma/client";
-import { ClienteDTO } from "../types/cliente_dtos/clienteDTO";
+import { ClienteDTO } from "../../types/cliente_dtos/clienteDTO";
 
 export async function toForm(cliente: Cliente): Promise<Partial<ClienteDTO>> {
   return {

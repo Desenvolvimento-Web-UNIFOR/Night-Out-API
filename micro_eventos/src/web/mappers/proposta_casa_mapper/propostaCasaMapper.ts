@@ -1,5 +1,5 @@
 import { Propostacasa } from "../../models/Propostacasa";
-import type { PropostaCasaDTO } from "../types/proposta_casa_dtos/propostaCasaDTO";
+import type { PropostaCasaDTO } from "../../types/proposta_casa_dtos/propostaCasaDTO";
 export async function toForm(
   propostaCasa: Propostacasa
 ): Promise<Partial<PropostaCasaDTO>> {

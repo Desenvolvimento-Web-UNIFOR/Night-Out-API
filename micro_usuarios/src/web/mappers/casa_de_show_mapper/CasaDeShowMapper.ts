@@ -1,5 +1,5 @@
 import { CasaShow } from "@prisma/client";
-import { CasaDeShowDTO } from "../types/casa_de_show_dtos/casaDeShowDTO";
+import { CasaDeShowDTO } from "../../types/casa_de_show_dtos/casaDeShowDTO";
 
 export async function toForm(
   casadehow: CasaShow

@@ -1,5 +1,5 @@
 import { Administrador } from "@prisma/client";
-import { AdministradorDTO } from "../types/administrador_dtos/administradorDTO";
+import { AdministradorDTO } from "../../types/administrador_dtos/administradorDTO";
 
 export async function toForm(
   artistaDTO: Administrador

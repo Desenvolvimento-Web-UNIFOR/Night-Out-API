@@ -1,5 +1,5 @@
 import { LoteIngresso } from "@prisma/client";
-import { LoteIngressoDTO } from "../types/lote_ingresso_dtos/loteIngressoDTO";
+import { LoteIngressoDTO } from "../../types/lote_ingresso_dtos/loteIngressoDTO";
 
 export async function toForm(
   loteingresso: LoteIngresso
