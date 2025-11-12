@@ -1,30 +1,29 @@
 import { Router } from "express";
 import {
-  login,
-  cadastro,
-  listarAdministradores,
   buscarAdministradorPorId,
-  cadastrarADM,
-  editarADM,
+  cadastro,
   deletarADM,
+  editarADM,
+  listarAdministradores
 } from "../../controller/adm/admLCController";
 
-import { protect } from "../../../core/middleware/authMiddleware";
+import { validateApiKey } from "../../../core/middleware/apiKeyMiddleware";
+import { isAdmin, protect } from "../../../core/middleware/authMiddleware";
 
 const AdmRoutes = Router();
 
-AdmRoutes.post("/login", login);
 
-AdmRoutes.post("/cadastro", cadastro);
 
-AdmRoutes.get("/", protect, listarAdministradores);
+AdmRoutes.post("/cadastro", validateApiKey, cadastro);
 
-AdmRoutes.get("/:id", protect, buscarAdministradorPorId);
+AdmRoutes.get("/", protect, isAdmin, listarAdministradores);
 
-AdmRoutes.post("/cadastrar", protect, cadastrarADM);
+AdmRoutes.get("/:id", protect, isAdmin, buscarAdministradorPorId);
 
-AdmRoutes.put("/:id", protect, editarADM);
 
-AdmRoutes.delete("/:id", protect, deletarADM);
+
+AdmRoutes.put("/:id", protect, isAdmin, editarADM);
+
+AdmRoutes.delete("/:id", protect, isAdmin, deletarADM);
 
 export default AdmRoutes;
