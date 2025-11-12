@@ -1,4 +1,5 @@
-import { Prisma } from "../../../core/generated/prisma";
+
+import { Prisma } from "@prisma/client";
 import { prisma } from "../../libs/prismaClient";
 import { ArtistaDTO } from "../../types/artista_dtos/artistaDTO";
 
