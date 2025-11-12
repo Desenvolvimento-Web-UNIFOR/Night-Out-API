@@ -1,4 +1,5 @@
-import { Administrador } from "../../../core/generated/prisma";
+
+import { Administrador } from "@prisma/client";
 import { AdministradorDTO } from "../../types/administrador_dtos/administradorDTO";
 
 export async function toForm(
