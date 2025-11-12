@@ -1,4 +1,5 @@
-import { Usuario } from "../../../core/generated/prisma";
+import { Usuario } from "@prisma/client";
+
 
 export async function toForm(usuario: Usuario): Promise<Partial<Usuario>> {
   return {
