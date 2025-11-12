@@ -20,8 +20,6 @@ AdmRoutes.get("/", protect, isAdmin, listarAdministradores);
 
 AdmRoutes.get("/:id", protect, isAdmin, buscarAdministradorPorId);
 
-
-
 AdmRoutes.put("/:id", protect, isAdmin, editarADM);
 
 AdmRoutes.delete("/:id", protect, isAdmin, deletarADM);
