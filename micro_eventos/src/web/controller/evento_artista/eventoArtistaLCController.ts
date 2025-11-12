@@ -15,7 +15,7 @@ export const criarEventoArtista: RequestHandler = async (req, res) => {
       eventoArtista: novoEventoArtista,
     });
   } catch (e) {
-    res.status(500).json({ message: Erro ao criar evento artista: ${e} });
+    res.status(500).json({ message: `Erro ao criar evento artista: ${e}` });
   }
 };
 
@@ -30,7 +30,7 @@ export const listarEventoArtista: RequestHandler = async (req, res) => {
     });
     res.status(200).json(lista);
   } catch (e) {
-    res.status(500).json({ message: Erro ao listar evento artista: ${e} });
+    res.status(500).json({ message: `Erro ao listar evento artista: ${e}` });
   }
 };
 
@@ -50,7 +50,7 @@ export const buscarEventoArtistaPorId: RequestHandler = async (req, res) => {
 
     res.status(200).json(eventoArtista);
   } catch (e) {
-    res.status(500).json({ message: Erro ao buscar evento artista: ${e} });
+    res.status(500).json({ message: `Erro ao buscar evento artista: ${e}` });
   }
 };
 
@@ -71,6 +71,6 @@ export const editarEventoArtista: RequestHandler = async (req, res) => {
       eventoArtista: eventoArtistaAtualizado,
     });
   } catch (e) {
-    res.status(500).json({ message: Erro ao editar evento artista: ${e} });
+    res.status(500).json({ message: `Erro ao editar evento artista: ${e}` });
   }
 };
