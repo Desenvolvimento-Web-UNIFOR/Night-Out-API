@@ -18,8 +18,14 @@ export const criarPropostaArtista: RequestHandler = async (req, res) => {
 }
 
 export const listarPropostaArtista: RequestHandler = async (req, res) => {
+    const { page = 1, pageSize = 10 } = req.query;
+    const offset = (Number(page) - 1) * Number(pageSize);
+    
     try {
-        const lista = await propostaArtistaService.listarPropostaArtista();
+        const lista = await propostaArtistaService.listarPropostaArtista({
+            offset,
+            limit: Number(pageSize),
+        });
         res.status(200).json(lista);
     } catch (e) {
         res.status(500).json({message: `Erro ao listar proposta artista: ${e}`});
@@ -28,7 +34,7 @@ export const listarPropostaArtista: RequestHandler = async (req, res) => {
 
 export const buscarPropostaArtistaPorId: RequestHandler = async (req, res) => {
     try {
-        const {id} = req.body;
+        const {id} = req.params;
         const propostaArtista = await propostaArtistaService.buscarPropostaArtista(id);
 
         if(!propostaArtista) {
@@ -44,7 +50,7 @@ export const buscarPropostaArtistaPorId: RequestHandler = async (req, res) => {
 
 export const editarPropostaArtista: RequestHandler = async (req, res) => {
     try {
-        const {id} = req.body;
+        const {id} = req.params;
         const dados: Partial<PropostaArtistaDTO> = req.body;
 
         const propostaArtistaAtualizado = await propostaArtistaService.atualizarPropostaArtista(id, dados);
@@ -54,6 +60,6 @@ export const editarPropostaArtista: RequestHandler = async (req, res) => {
             propostaArtista: propostaArtistaAtualizado,
         });
     } catch (e) {
-        res.status(500).json({message: `Erro ao editar evento artista: ${e}`});
+        res.status(500).json({message: `Erro ao editar proposta artista: ${e}`});
     }
 }
