@@ -1,7 +1,7 @@
-import type { RequestHandler } from "express";
-import * as clienteService from "../../service/cliente/clienteService";
 import bcrypt from "bcryptjs";
+import type { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
+import * as clienteService from "../../service/cliente/clienteService";
 
 const JWT_SECRET = "SEGREDO_SUPER_FORTE_DO_JWT";
 
@@ -10,7 +10,6 @@ export const login: RequestHandler = async (req, res) => {
     const email = String(req.body.email);
     const senha = String(req.body.senha);
 
-  
     const cliente = await clienteService.buscarClienteParaLogin(email);
 
     if (!cliente) {
@@ -18,7 +17,6 @@ export const login: RequestHandler = async (req, res) => {
       return;
     }
 
-    
     const isMatch = await bcrypt.compare(senha, cliente.usuario.senha_hash);
 
     if (!isMatch) {
@@ -26,7 +24,6 @@ export const login: RequestHandler = async (req, res) => {
       return;
     }
 
-    
     const token = jwt.sign(
       { id: cliente.id_usuario, email: cliente.usuario.email },
       JWT_SECRET,
@@ -57,13 +54,13 @@ export const cadastro: RequestHandler = async (req, res) => {
     } = req.body;
 
     const salt = await bcrypt.genSalt(10);
-  
+
     const senha_hash = await bcrypt.hash(senha, salt);
 
     const novoCliente = await clienteService.cadastro({
       nome,
       email,
-      senha: senha_hash, 
+      senha: senha_hash,
       telefone,
       apelido,
       preferencias,
@@ -76,14 +73,21 @@ export const cadastro: RequestHandler = async (req, res) => {
     });
   } catch (e) {
     console.error("Erro no cadastro:", e);
-    
+
     res.status(500).json({ message: `Erro no cadastro interno.` });
   }
 };
 
 export const listarClientes: RequestHandler = async (req, res) => {
   try {
-    const lista = await clienteService.listarClientes();
+    const { page = 1, pageSize = 10 } = req.query;
+    const offset = (Number(page) - 1) * Number(pageSize);
+
+    const lista = await clienteService.listarClientes({
+      offset,
+      limit: Number(pageSize),
+    });
+
     res.status(200).json(lista);
   } catch (e) {
     res.status(500).json({ message: `Erro ao listar clientes: ${e}` });
@@ -108,7 +112,6 @@ export const buscarClientePorId: RequestHandler = async (req, res) => {
 
 export const cadastrarCliente: RequestHandler = async (req, res) => {
   try {
-
     const clienteDTO = req.body;
     const novoCliente = await clienteService.cadastrarCliente(clienteDTO);
 
@@ -136,5 +139,16 @@ export const editarCliente: RequestHandler = async (req, res) => {
     });
   } catch (e) {
     res.status(500).json({ message: `Erro ao editar cliente: ${e}` });
+  }
+};
+
+export const deletarCliente: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await clienteService.deletarCliente(id);
+
+    res.status(204).send();
+  } catch (e) {
+    res.status(500).json({ message: `Erro ao deletar cliente: ${e}` });
   }
 };
