@@ -1,4 +1,5 @@
-import { Prisma } from "../../../core/generated/prisma";
+
+import { Prisma } from "@prisma/client";
 import { prisma } from "../../libs/prismaClient";
 import { ClienteDTO } from "../../types/cliente_dtos/clienteDTO";
 
@@ -17,15 +18,13 @@ export async function buscarClienteParaLogin(email: string): Promise<ClienteComU
             },
         },
         include: {
-            usuario: true, // Incluir 'usuario' garante que o 'senha_hash' esteja disponível
+            usuario: true, 
         },
     });
 
     return cliente; 
 }
 
-// 2. FUNÇÃO DE CADASTRO
-// Esta função recebe a senha JÁ HASHADA do Controller.
 export async function cadastro(dados: {
     nome: string;
     email: string;
@@ -45,7 +44,7 @@ export async function cadastro(dados: {
                 create: {
                     nome: dados.nome,
                     email: dados.email,
-                    senha_hash: dados.senha, // Usa o hash
+                    senha_hash: dados.senha, 
                     telefone: dados.telefone,
                     tipo: "CLIENTE",
                 },
@@ -112,7 +111,7 @@ export async function cadastrarCliente(clienteDTO: ClienteDTO) {
                 create: {
                     nome: clienteDTO.usuario[0].nome,
                     email: clienteDTO.usuario[0].email,
-                    senha_hash: clienteDTO.usuario[0].senha_hash, // Deve ser o hash
+                    senha_hash: clienteDTO.usuario[0].senha_hash, 
                     telefone: clienteDTO.usuario[0].telefone,
                     tipo: "CLIENTE",
                 },
