@@ -4,7 +4,7 @@ import {
     exportarRelatorioExcel,
     gerarRelatorio,
     listarRelatorios,
-} from "../../controller/relatorio/relatorioLCController";
+} from "../../controllers/relatorio/relatorioLCController";
 
 const RelatorioRoutes = Router();
 
