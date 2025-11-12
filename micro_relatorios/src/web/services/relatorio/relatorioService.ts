@@ -3,6 +3,7 @@ import ExcelJS from "exceljs";
 import { eventosClient, usuariosClient } from "../../libs/microservicesClient";
 import { prisma } from "../../libs/prismClient";
 import { RelatorioDTO } from "../../types/relatorio_dtos/relatorioDTO";
+import { relatorioDTOSchema } from "../../../core/validations/relatorio_validation/relatorioDTOValidation";
 
 export async function gerarRelatorio(dados: RelatorioDTO) {
   const TIPO_RELATORIO = [
@@ -459,7 +460,7 @@ export async function listarRelatorios() {
     orderBy: { createdAt: "desc" },
   });
 
-  return relatorios.map((r) => ({
+  return relatorios.map((r: (typeof relatorios)[number]) => ({
     id_relatorio: r.id_relatorio,
     tipo_relatorio: r.tipo_relatorio,
     nome_relatorio: r.nome_relatorio,
