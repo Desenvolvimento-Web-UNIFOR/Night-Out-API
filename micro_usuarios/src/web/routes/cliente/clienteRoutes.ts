@@ -5,14 +5,12 @@ import {
   cadastro,
   editarCliente,
   deletarCliente,
-  listarClientes
+  listarClientes,
 } from "../../controller/cliente/clienteLCControllers";
 
 import { protect } from "../../../core/middleware/authMiddleware";
 
 const ClienteRoutes = Router();
-
-
 
 ClienteRoutes.post("/cadastro", cadastro);
 
