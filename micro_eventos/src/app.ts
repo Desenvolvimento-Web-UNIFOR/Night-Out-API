@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173/", "http://localhost:3000/"],
+    origin: ["http://localhost:5173", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
@@ -26,5 +26,5 @@ app.use("/propostaCasa", propostaCasaRoutes);
 const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {
-  console.log(Microserviço de Eventos rodando na porta ${PORT});
+  console.log(`Microserviço de Eventos rodando na porta ${PORT}`);
 });
