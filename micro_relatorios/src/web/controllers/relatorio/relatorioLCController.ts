@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import * as relatorioService from "../../service/relatorio/relatorioService";
+import * as relatorioService from "../../services/relatorio/relatorioService";
 import type { RelatorioDTO } from "../../types/relatorio_dtos/relatorioDTO";
 
 export const gerarRelatorio: RequestHandler = async (req, res) => {
