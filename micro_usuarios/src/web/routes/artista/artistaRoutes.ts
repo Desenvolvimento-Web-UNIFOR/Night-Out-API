@@ -1,4 +1,3 @@
-artista:
 import { Router } from "express";
 import {
   buscarArtistaPorId,
@@ -6,14 +5,12 @@ import {
   cadastro,
   deletarArtista,
   editarArtista,
-  listarArtistas
+  listarArtistas,
 } from "../../controller/artista/artistaLCController";
 
 import { protect } from "../../../core/middleware/authMiddleware";
 
 const ArtistaRoutes = Router();
-
-
 
 ArtistaRoutes.post("/cadastro", cadastro);
 
