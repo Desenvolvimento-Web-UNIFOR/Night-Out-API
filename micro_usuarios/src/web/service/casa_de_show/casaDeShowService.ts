@@ -1,4 +1,5 @@
-import { Prisma } from "../../../core/generated/prisma";
+
+import { Prisma } from "@prisma/client";
 import { prisma } from "../../libs/prismaClient";
 import { CasaDeShowDTO } from "../../types/casa_de_show_dtos/casaDeShowDTO";
 
