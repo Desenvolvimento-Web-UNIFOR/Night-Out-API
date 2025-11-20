@@ -99,7 +99,8 @@ export async function listarCasasDeShow({ offset, limit }: { offset: number; lim
         id: casa.id_usuario,
         nome: casa.usuario.nome,
         endereco: casa.endereco,
-
+        cnpj: casa.cnpj,
+        bairro: casa.bairro,
         nome_fantasia: casa.nome_fantasia,
     }));
 }

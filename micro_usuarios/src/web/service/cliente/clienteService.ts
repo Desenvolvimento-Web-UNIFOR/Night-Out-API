@@ -82,8 +82,6 @@ export async function listarClientes({ offset, limit }: { offset: number; limit:
         nome: cliente.usuario.nome,
         email: cliente.usuario.email,
         telefone: cliente.usuario.telefone,
-        apelido: cliente.apelido,
-        preferencias: cliente.preferencias,
         data_nascimento: cliente.data_nascimento,
     }));
 }
