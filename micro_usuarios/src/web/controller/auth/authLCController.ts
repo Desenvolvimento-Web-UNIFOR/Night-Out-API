@@ -27,5 +27,7 @@ export const login: RequestHandler = asyncHandler(async (req: Request, res: Resp
     message: "Login realizado com sucesso!",
     token: token,
     tipo: usuario.tipo,
+    nome: usuario.nome,
+    email: usuario.email
   });
 });
