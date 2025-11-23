@@ -102,6 +102,7 @@ export async function listarCasasDeShow({ offset, limit }: { offset: number; lim
         cnpj: casa.cnpj,
         bairro: casa.bairro,
         nome_fantasia: casa.nome_fantasia,
+        data: casa.createdAt,
     }));
 }
 
