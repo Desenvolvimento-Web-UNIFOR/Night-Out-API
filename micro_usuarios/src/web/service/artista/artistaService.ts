@@ -89,6 +89,7 @@ export async function listarArtistas({ offset, limit }: { offset: number; limit:
         email: artista.usuario.email,
         nome_artista: artista.nome_artista,
         genero_musical: artista.genero_musical,
+        data: artista.createdAt,
     }));
 }
 

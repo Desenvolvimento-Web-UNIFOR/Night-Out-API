@@ -84,6 +84,7 @@ export async function listarClientes({
     email: cliente.usuario.email,
     telefone: cliente.usuario.telefone,
     data_nascimento: cliente.data_nascimento,
+    data: cliente.createdAt,
   }));
 }
 
