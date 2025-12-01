@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UsuarioTipo {
+  CLIENTE
+  ARTISTA
+  ADMINISTRADOR
+  CASASHOW
+}
+
+model Usuario {
+  id_usuario String      @id @default(uuid())
+  nome       String
+  email      String      @unique
+  senha_hash String
+  tipo       UsuarioTipo
+  telefone   String?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  cliente       Cliente?
+  artista       Artista?
+  administrador Administrador?
+  casaShow      CasaShow?
+}
+
+model Cliente {
+  id_usuario      String    @id
+  apelido         String?
+  preferencias    String?
+  data_nascimento DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  usuario Usuario @relation(fields: [id_usuario], references: [id_usuario])
+}
+
+model Artista {
+  id_usuario     String   @id
+  nome_artista   String
+  genero_musical String
+  cache_min      String
+  descricao      String?
+  portifolio     String?
+  verificado     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  usuario Usuario @relation(fields: [id_usuario], references: [id_usuario])
+}
+
+model Administrador {
+  id_usuario      String   @id
+  cargo           String
+  permissao_nivel String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  usuario Usuario @relation(fields: [id_usuario], references: [id_usuario])
+}
+
+model CasaShow {
+  id_usuario    String   @id
+  nome_fantasia String
+  cnpj          String
+  capacidade    String
+  endereco      String
+  bairro        String
+  estado        String
+  cep           String
+  geo_lat       String
+  geo_lng       String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  usuario Usuario @relation(fields: [id_usuario], references: [id_usuario])
+}

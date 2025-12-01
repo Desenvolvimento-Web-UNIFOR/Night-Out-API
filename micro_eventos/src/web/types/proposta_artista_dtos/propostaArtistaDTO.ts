@@ -9,6 +9,7 @@ export interface PropostaArtistaDTO {
   valor_ofertado: string;
   status: string;
   termos: string;
+  aceito?: string;
 
   evento: EventoDTO[];
 }
