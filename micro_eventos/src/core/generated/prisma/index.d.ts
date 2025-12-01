@@ -3514,6 +3514,7 @@ export namespace Prisma {
     valor_ofertado: string | null
     status: string | null
     termos: string | null
+    aceito: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3527,6 +3528,7 @@ export namespace Prisma {
     valor_ofertado: string | null
     status: string | null
     termos: string | null
+    aceito: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3540,6 +3542,7 @@ export namespace Prisma {
     valor_ofertado: number
     status: number
     termos: number
+    aceito: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3555,6 +3558,7 @@ export namespace Prisma {
     valor_ofertado?: true
     status?: true
     termos?: true
+    aceito?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3568,6 +3572,7 @@ export namespace Prisma {
     valor_ofertado?: true
     status?: true
     termos?: true
+    aceito?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3581,6 +3586,7 @@ export namespace Prisma {
     valor_ofertado?: true
     status?: true
     termos?: true
+    aceito?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3667,6 +3673,7 @@ export namespace Prisma {
     valor_ofertado: string
     status: string
     termos: string | null
+    aceito: string | null
     createdAt: Date
     updatedAt: Date
     _count: PropostaArtistaCountAggregateOutputType | null
@@ -3697,6 +3704,7 @@ export namespace Prisma {
     valor_ofertado?: boolean
     status?: boolean
     termos?: boolean
+    aceito?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     evento?: boolean | EventoDefaultArgs<ExtArgs>
@@ -3711,6 +3719,7 @@ export namespace Prisma {
     valor_ofertado?: boolean
     status?: boolean
     termos?: boolean
+    aceito?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     evento?: boolean | EventoDefaultArgs<ExtArgs>
@@ -3725,6 +3734,7 @@ export namespace Prisma {
     valor_ofertado?: boolean
     status?: boolean
     termos?: boolean
+    aceito?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     evento?: boolean | EventoDefaultArgs<ExtArgs>
@@ -3739,11 +3749,12 @@ export namespace Prisma {
     valor_ofertado?: boolean
     status?: boolean
     termos?: boolean
+    aceito?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PropostaArtistaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_proposta_artista" | "id_casa" | "id_evento" | "data_proposta" | "data_evento" | "valor_ofertado" | "status" | "termos" | "createdAt" | "updatedAt", ExtArgs["result"]["propostaArtista"]>
+  export type PropostaArtistaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_proposta_artista" | "id_casa" | "id_evento" | "data_proposta" | "data_evento" | "valor_ofertado" | "status" | "termos" | "aceito" | "createdAt" | "updatedAt", ExtArgs["result"]["propostaArtista"]>
   export type PropostaArtistaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evento?: boolean | EventoDefaultArgs<ExtArgs>
   }
@@ -3768,6 +3779,7 @@ export namespace Prisma {
       valor_ofertado: string
       status: string
       termos: string | null
+      aceito: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["propostaArtista"]>
@@ -4202,6 +4214,7 @@ export namespace Prisma {
     readonly valor_ofertado: FieldRef<"PropostaArtista", 'String'>
     readonly status: FieldRef<"PropostaArtista", 'String'>
     readonly termos: FieldRef<"PropostaArtista", 'String'>
+    readonly aceito: FieldRef<"PropostaArtista", 'String'>
     readonly createdAt: FieldRef<"PropostaArtista", 'DateTime'>
     readonly updatedAt: FieldRef<"PropostaArtista", 'DateTime'>
   }
@@ -5770,6 +5783,7 @@ export namespace Prisma {
     valor_ofertado: 'valor_ofertado',
     status: 'status',
     termos: 'termos',
+    aceito: 'aceito',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6043,6 +6057,7 @@ export namespace Prisma {
     valor_ofertado?: StringFilter<"PropostaArtista"> | string
     status?: StringFilter<"PropostaArtista"> | string
     termos?: StringNullableFilter<"PropostaArtista"> | string | null
+    aceito?: StringNullableFilter<"PropostaArtista"> | string | null
     createdAt?: DateTimeFilter<"PropostaArtista"> | Date | string
     updatedAt?: DateTimeFilter<"PropostaArtista"> | Date | string
     evento?: XOR<EventoScalarRelationFilter, EventoWhereInput>
@@ -6057,6 +6072,7 @@ export namespace Prisma {
     valor_ofertado?: SortOrder
     status?: SortOrder
     termos?: SortOrderInput | SortOrder
+    aceito?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     evento?: EventoOrderByWithRelationInput
@@ -6074,6 +6090,7 @@ export namespace Prisma {
     valor_ofertado?: StringFilter<"PropostaArtista"> | string
     status?: StringFilter<"PropostaArtista"> | string
     termos?: StringNullableFilter<"PropostaArtista"> | string | null
+    aceito?: StringNullableFilter<"PropostaArtista"> | string | null
     createdAt?: DateTimeFilter<"PropostaArtista"> | Date | string
     updatedAt?: DateTimeFilter<"PropostaArtista"> | Date | string
     evento?: XOR<EventoScalarRelationFilter, EventoWhereInput>
@@ -6088,6 +6105,7 @@ export namespace Prisma {
     valor_ofertado?: SortOrder
     status?: SortOrder
     termos?: SortOrderInput | SortOrder
+    aceito?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PropostaArtistaCountOrderByAggregateInput
@@ -6107,6 +6125,7 @@ export namespace Prisma {
     valor_ofertado?: StringWithAggregatesFilter<"PropostaArtista"> | string
     status?: StringWithAggregatesFilter<"PropostaArtista"> | string
     termos?: StringNullableWithAggregatesFilter<"PropostaArtista"> | string | null
+    aceito?: StringNullableWithAggregatesFilter<"PropostaArtista"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"PropostaArtista"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PropostaArtista"> | Date | string
   }
@@ -6383,6 +6402,7 @@ export namespace Prisma {
     valor_ofertado: string
     status: string
     termos?: string | null
+    aceito?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     evento: EventoCreateNestedOneWithoutPropostasArtistaInput
@@ -6397,6 +6417,7 @@ export namespace Prisma {
     valor_ofertado: string
     status: string
     termos?: string | null
+    aceito?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6409,6 +6430,7 @@ export namespace Prisma {
     valor_ofertado?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     termos?: NullableStringFieldUpdateOperationsInput | string | null
+    aceito?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evento?: EventoUpdateOneRequiredWithoutPropostasArtistaNestedInput
@@ -6423,6 +6445,7 @@ export namespace Prisma {
     valor_ofertado?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     termos?: NullableStringFieldUpdateOperationsInput | string | null
+    aceito?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6436,6 +6459,7 @@ export namespace Prisma {
     valor_ofertado: string
     status: string
     termos?: string | null
+    aceito?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6448,6 +6472,7 @@ export namespace Prisma {
     valor_ofertado?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     termos?: NullableStringFieldUpdateOperationsInput | string | null
+    aceito?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6461,6 +6486,7 @@ export namespace Prisma {
     valor_ofertado?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     termos?: NullableStringFieldUpdateOperationsInput | string | null
+    aceito?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6759,6 +6785,7 @@ export namespace Prisma {
     valor_ofertado?: SortOrder
     status?: SortOrder
     termos?: SortOrder
+    aceito?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6772,6 +6799,7 @@ export namespace Prisma {
     valor_ofertado?: SortOrder
     status?: SortOrder
     termos?: SortOrder
+    aceito?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6785,6 +6813,7 @@ export namespace Prisma {
     valor_ofertado?: SortOrder
     status?: SortOrder
     termos?: SortOrder
+    aceito?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7158,6 +7187,7 @@ export namespace Prisma {
     valor_ofertado: string
     status: string
     termos?: string | null
+    aceito?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7170,6 +7200,7 @@ export namespace Prisma {
     valor_ofertado: string
     status: string
     termos?: string | null
+    aceito?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7274,6 +7305,7 @@ export namespace Prisma {
     valor_ofertado?: StringFilter<"PropostaArtista"> | string
     status?: StringFilter<"PropostaArtista"> | string
     termos?: StringNullableFilter<"PropostaArtista"> | string | null
+    aceito?: StringNullableFilter<"PropostaArtista"> | string | null
     createdAt?: DateTimeFilter<"PropostaArtista"> | Date | string
     updatedAt?: DateTimeFilter<"PropostaArtista"> | Date | string
   }
@@ -7556,6 +7588,7 @@ export namespace Prisma {
     valor_ofertado: string
     status: string
     termos?: string | null
+    aceito?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7614,6 +7647,7 @@ export namespace Prisma {
     valor_ofertado?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     termos?: NullableStringFieldUpdateOperationsInput | string | null
+    aceito?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7626,6 +7660,7 @@ export namespace Prisma {
     valor_ofertado?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     termos?: NullableStringFieldUpdateOperationsInput | string | null
+    aceito?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7638,6 +7673,7 @@ export namespace Prisma {
     valor_ofertado?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     termos?: NullableStringFieldUpdateOperationsInput | string | null
+    aceito?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

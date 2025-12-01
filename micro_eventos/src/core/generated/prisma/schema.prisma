@@ -49,6 +49,7 @@ model PropostaArtista {
   valor_ofertado      String
   status              String
   termos              String?
+  aceito              String?
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 

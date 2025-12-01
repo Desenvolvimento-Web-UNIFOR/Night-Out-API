@@ -12,6 +12,7 @@ export async function criarPropostaArtista(dados: PropostaArtistaDTO) {
       valor_ofertado: dados.valor_ofertado,
       status: dados.status ?? "DISPONÍVEL",
       termos: dados.termos,
+      aceito: dados.aceito,
     },
   });
 
@@ -42,6 +43,7 @@ export async function listarPropostaArtista({
     valor_ofertado: e.valor_ofertado,
     status: e.status,
     termos: e.termos,
+    aceito: e.aceito,
   }));
 }
 
@@ -83,6 +85,7 @@ export async function atualizarPropostaArtista(
       valor_ofertado:
         dados.valor_ofertado ?? propostaArtistaExistente.valor_ofertado,
       termos: dados.termos ?? propostaArtistaExistente.termos,
+      aceito: dados.aceito ?? propostaArtistaExistente.aceito,
     },
   });
 

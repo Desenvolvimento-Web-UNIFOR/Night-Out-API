@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.16.2
- * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
+ * Prisma Client JS version: 6.17.1
+ * Query Engine version: 272a37d34178c2894197e17273bf937f25acdeac
  */
 Prisma.prismaVersion = {
-  client: "6.16.2",
-  engine: "1c57fdcd7e44b29b9313256c76699e91c3ac3c43"
+  client: "6.17.1",
+  engine: "272a37d34178c2894197e17273bf937f25acdeac"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -120,53 +120,57 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.EventoScalarFieldEnum = {
-  id_evento: 'id_evento',
+exports.Prisma.UsuarioScalarFieldEnum = {
   id_usuario: 'id_usuario',
-  titulo: 'titulo',
+  nome: 'nome',
+  email: 'email',
+  senha_hash: 'senha_hash',
+  tipo: 'tipo',
+  telefone: 'telefone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ClienteScalarFieldEnum = {
+  id_usuario: 'id_usuario',
+  apelido: 'apelido',
+  preferencias: 'preferencias',
+  data_nascimento: 'data_nascimento',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ArtistaScalarFieldEnum = {
+  id_usuario: 'id_usuario',
+  nome_artista: 'nome_artista',
+  genero_musical: 'genero_musical',
+  cache_min: 'cache_min',
   descricao: 'descricao',
-  data_inicio: 'data_inicio',
-  data_fim: 'data_fim',
-  local: 'local',
-  status: 'status',
+  portifolio: 'portifolio',
+  verificado: 'verificado',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PropostaCasaScalarFieldEnum = {
-  id_proposta_casa: 'id_proposta_casa',
-  id_artista: 'id_artista',
-  id_evento: 'id_evento',
-  data_proposta: 'data_proposta',
-  data_evento: 'data_evento',
-  valor_ofertado: 'valor_ofertado',
-  status: 'status',
-  termos: 'termos',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.PropostaArtistaScalarFieldEnum = {
-  id_proposta_artista: 'id_proposta_artista',
-  id_casa: 'id_casa',
-  id_evento: 'id_evento',
-  data_proposta: 'data_proposta',
-  data_evento: 'data_evento',
-  valor_ofertado: 'valor_ofertado',
-  status: 'status',
-  termos: 'termos',
-  aceito: 'aceito',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.EventoArtistaScalarFieldEnum = {
-  id_evento: 'id_evento',
+exports.Prisma.AdministradorScalarFieldEnum = {
   id_usuario: 'id_usuario',
-  funcao: 'funcao',
-  contrato_acordado: 'contrato_acordado',
-  cache_final: 'cache_final',
-  created_final: 'created_final',
+  cargo: 'cargo',
+  permissao_nivel: 'permissao_nivel',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CasaShowScalarFieldEnum = {
+  id_usuario: 'id_usuario',
+  nome_fantasia: 'nome_fantasia',
+  cnpj: 'cnpj',
+  capacidade: 'capacidade',
+  endereco: 'endereco',
+  bairro: 'bairro',
+  estado: 'estado',
+  cep: 'cep',
+  geo_lat: 'geo_lat',
+  geo_lng: 'geo_lng',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -185,13 +189,19 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.UsuarioTipo = exports.$Enums.UsuarioTipo = {
+  CLIENTE: 'CLIENTE',
+  ARTISTA: 'ARTISTA',
+  ADMINISTRADOR: 'ADMINISTRADOR',
+  CASASHOW: 'CASASHOW'
+};
 
 exports.Prisma.ModelName = {
-  Evento: 'Evento',
-  PropostaCasa: 'PropostaCasa',
-  PropostaArtista: 'PropostaArtista',
-  EventoArtista: 'EventoArtista'
+  Usuario: 'Usuario',
+  Cliente: 'Cliente',
+  Artista: 'Artista',
+  Administrador: 'Administrador',
+  CasaShow: 'CasaShow'
 };
 
 /**

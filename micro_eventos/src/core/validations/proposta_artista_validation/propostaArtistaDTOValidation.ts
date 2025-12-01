@@ -9,6 +9,7 @@ export const propostaArtistaDTOValidation = z.object({
   valor_ofertado: z.string(),
   status: z.string().min(0),
   termos: z.string().min(0),
+  aceito: z.string().optional(),
   createdAt: z.date(),
   updatedAt: z.date(),
 });
