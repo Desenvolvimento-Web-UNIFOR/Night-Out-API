@@ -24,6 +24,7 @@ export const login: RequestHandler = asyncHandler(async (req: Request, res: Resp
   );
 
   res.status(200).json({
+    id: usuario.id_usuario,
     message: "Login realizado com sucesso!",
     token: token,
     tipo: usuario.tipo,
