@@ -96,3 +96,24 @@ export async function deletarEvento(id: string) {
     message: "Evento deletado com sucesso",
   };
 }
+
+export async function buscarEventosPorIdCasaShow(id_casa_show: string) {
+  const eventos = await prisma.evento.findMany({
+    where: { id_usuario: id_casa_show },
+  });
+
+  if (!eventos.length) {
+    return null;
+  }
+
+  return eventos.map((e: any) => ({
+    id_evento: e.id_evento,
+    id_usuario: e.id_usuario,
+    titulo: e.titulo,
+    descricao: e.descricao,
+    data_inicio: e.data_inicio,
+    data_fim: e.data_fim,
+    local: e.local,
+    status: e.status,
+  }));
+}

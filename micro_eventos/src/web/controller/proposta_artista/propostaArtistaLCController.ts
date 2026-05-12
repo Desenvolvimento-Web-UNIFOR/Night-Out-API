@@ -1,6 +1,7 @@
 import type { RequestHandler } from 'express';
 import * as propostaArtistaService from "../../service/proposta_artista/propostaArtistaService";
 import type { PropostaArtistaDTO } from "../../types/proposta_artista_dtos/propostaArtistaDTO";
+import type { CustomRequest } from "../../../core/middleware/authMiddleware";
 
 export const criarPropostaArtista: RequestHandler = async (req, res) => {
     try {
@@ -63,3 +64,47 @@ export const editarPropostaArtista: RequestHandler = async (req, res) => {
         res.status(500).json({message: `Erro ao editar proposta artista: ${e}`});
     }
 }
+
+export const buscarPropostaArtistaPorIdCasaShow: RequestHandler = async (req: CustomRequest, res) => {
+    try {
+        const { idCasaShow } = req.params;
+
+        if (req.user?.id !== idCasaShow) {
+            res.status(403).json({ message: "Acesso negado. Token não pertence à Casa de Show informada." });
+            return;
+        }
+
+        const propostas = await propostaArtistaService.buscarPropostasArtistaPorIdCasaShow(idCasaShow);
+
+        if (!propostas) {
+            res.status(404).json({ message: "Nenhuma proposta artista encontrada para esta Casa de Show." });
+            return;
+        }
+
+        res.status(200).json(propostas);
+    } catch (e) {
+        res.status(500).json({ message: `Erro ao buscar proposta artista por idCasaShow: ${e}` });
+    }
+};
+
+export const buscarPropostaArtistaPorIdArtista: RequestHandler = async (req: CustomRequest, res) => {
+    try {
+        const { idArtista } = req.params;
+
+        if (req.user?.id !== idArtista) {
+            res.status(403).json({ message: "Acesso negado. Token não pertence ao Artista informado." });
+            return;
+        }
+
+        const propostas = await propostaArtistaService.buscarPropostasArtistaPorIdArtista(idArtista);
+
+        if (!propostas) {
+            res.status(404).json({ message: "Nenhuma proposta artista encontrada para este Artista." });
+            return;
+        }
+
+        res.status(200).json(propostas);
+    } catch (e) {
+        res.status(500).json({ message: `Erro ao buscar proposta artista por idArtista: ${e}` });
+    }
+};

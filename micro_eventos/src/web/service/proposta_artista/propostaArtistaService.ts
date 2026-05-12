@@ -116,3 +116,49 @@ export async function deletarPropostaArtista(id: string) {
     message: "Proposta artista deletado",
   };
 }
+
+export async function buscarPropostasArtistaPorIdCasaShow(id_casa: string) {
+  const propostas = await prisma.propostaArtista.findMany({
+    where: { id_casa },
+  });
+
+  if (!propostas.length) {
+    return null;
+  }
+
+  return propostas.map((e: any) => ({
+    id_proposta_artista: e.id_proposta_artista,
+    id_casa: e.id_casa,
+    id_artista: e.id_artista,
+    id_evento: e.id_evento,
+    data_proposta: e.data_proposta,
+    data_evento: e.data_evento,
+    valor_ofertado: e.valor_ofertado,
+    status: e.status,
+    termos: e.termos,
+    aceito: e.aceito,
+  }));
+}
+
+export async function buscarPropostasArtistaPorIdArtista(id_artista: string) {
+  const propostas = await prisma.propostaArtista.findMany({
+    where: { id_artista },
+  });
+
+  if (!propostas.length) {
+    return null;
+  }
+
+  return propostas.map((e: any) => ({
+    id_proposta_artista: e.id_proposta_artista,
+    id_casa: e.id_casa,
+    id_artista: e.id_artista,
+    id_evento: e.id_evento,
+    data_proposta: e.data_proposta,
+    data_evento: e.data_evento,
+    valor_ofertado: e.valor_ofertado,
+    status: e.status,
+    termos: e.termos,
+    aceito: e.aceito,
+  }));
+}
