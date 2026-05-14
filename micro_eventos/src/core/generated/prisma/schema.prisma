@@ -28,6 +28,7 @@ model Evento {
 model PropostaCasa {
   id_proposta_casa String   @id @default(uuid())
   id_artista       String
+  id_casa_show     String?
   id_evento        String
   data_proposta    DateTime
   data_evento      DateTime
