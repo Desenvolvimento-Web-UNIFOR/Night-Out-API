@@ -249,8 +249,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.16.2
-   * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
+   * Prisma Client JS version: 6.17.0
+   * Query Engine version: c0aafc03b8ef6cdced8654b9a817999e02457d6a
    */
   export type PrismaVersion = {
     client: string
@@ -3508,6 +3508,7 @@ export namespace Prisma {
   export type PropostaArtistaMinAggregateOutputType = {
     id_proposta_artista: string | null
     id_casa: string | null
+    id_artista: string | null
     id_evento: string | null
     data_proposta: Date | null
     data_evento: Date | null
@@ -3522,6 +3523,7 @@ export namespace Prisma {
   export type PropostaArtistaMaxAggregateOutputType = {
     id_proposta_artista: string | null
     id_casa: string | null
+    id_artista: string | null
     id_evento: string | null
     data_proposta: Date | null
     data_evento: Date | null
@@ -3536,6 +3538,7 @@ export namespace Prisma {
   export type PropostaArtistaCountAggregateOutputType = {
     id_proposta_artista: number
     id_casa: number
+    id_artista: number
     id_evento: number
     data_proposta: number
     data_evento: number
@@ -3552,6 +3555,7 @@ export namespace Prisma {
   export type PropostaArtistaMinAggregateInputType = {
     id_proposta_artista?: true
     id_casa?: true
+    id_artista?: true
     id_evento?: true
     data_proposta?: true
     data_evento?: true
@@ -3566,6 +3570,7 @@ export namespace Prisma {
   export type PropostaArtistaMaxAggregateInputType = {
     id_proposta_artista?: true
     id_casa?: true
+    id_artista?: true
     id_evento?: true
     data_proposta?: true
     data_evento?: true
@@ -3580,6 +3585,7 @@ export namespace Prisma {
   export type PropostaArtistaCountAggregateInputType = {
     id_proposta_artista?: true
     id_casa?: true
+    id_artista?: true
     id_evento?: true
     data_proposta?: true
     data_evento?: true
@@ -3667,6 +3673,7 @@ export namespace Prisma {
   export type PropostaArtistaGroupByOutputType = {
     id_proposta_artista: string
     id_casa: string
+    id_artista: string | null
     id_evento: string
     data_proposta: Date
     data_evento: Date
@@ -3698,6 +3705,7 @@ export namespace Prisma {
   export type PropostaArtistaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_proposta_artista?: boolean
     id_casa?: boolean
+    id_artista?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -3713,6 +3721,7 @@ export namespace Prisma {
   export type PropostaArtistaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_proposta_artista?: boolean
     id_casa?: boolean
+    id_artista?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -3728,6 +3737,7 @@ export namespace Prisma {
   export type PropostaArtistaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_proposta_artista?: boolean
     id_casa?: boolean
+    id_artista?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -3743,6 +3753,7 @@ export namespace Prisma {
   export type PropostaArtistaSelectScalar = {
     id_proposta_artista?: boolean
     id_casa?: boolean
+    id_artista?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -3754,7 +3765,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PropostaArtistaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_proposta_artista" | "id_casa" | "id_evento" | "data_proposta" | "data_evento" | "valor_ofertado" | "status" | "termos" | "aceito" | "createdAt" | "updatedAt", ExtArgs["result"]["propostaArtista"]>
+  export type PropostaArtistaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_proposta_artista" | "id_casa" | "id_artista" | "id_evento" | "data_proposta" | "data_evento" | "valor_ofertado" | "status" | "termos" | "aceito" | "createdAt" | "updatedAt", ExtArgs["result"]["propostaArtista"]>
   export type PropostaArtistaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evento?: boolean | EventoDefaultArgs<ExtArgs>
   }
@@ -3773,6 +3784,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id_proposta_artista: string
       id_casa: string
+      id_artista: string | null
       id_evento: string
       data_proposta: Date
       data_evento: Date
@@ -4208,6 +4220,7 @@ export namespace Prisma {
   interface PropostaArtistaFieldRefs {
     readonly id_proposta_artista: FieldRef<"PropostaArtista", 'String'>
     readonly id_casa: FieldRef<"PropostaArtista", 'String'>
+    readonly id_artista: FieldRef<"PropostaArtista", 'String'>
     readonly id_evento: FieldRef<"PropostaArtista", 'String'>
     readonly data_proposta: FieldRef<"PropostaArtista", 'DateTime'>
     readonly data_evento: FieldRef<"PropostaArtista", 'DateTime'>
@@ -5777,6 +5790,7 @@ export namespace Prisma {
   export const PropostaArtistaScalarFieldEnum: {
     id_proposta_artista: 'id_proposta_artista',
     id_casa: 'id_casa',
+    id_artista: 'id_artista',
     id_evento: 'id_evento',
     data_proposta: 'data_proposta',
     data_evento: 'data_evento',
@@ -6051,6 +6065,7 @@ export namespace Prisma {
     NOT?: PropostaArtistaWhereInput | PropostaArtistaWhereInput[]
     id_proposta_artista?: StringFilter<"PropostaArtista"> | string
     id_casa?: StringFilter<"PropostaArtista"> | string
+    id_artista?: StringNullableFilter<"PropostaArtista"> | string | null
     id_evento?: StringFilter<"PropostaArtista"> | string
     data_proposta?: DateTimeFilter<"PropostaArtista"> | Date | string
     data_evento?: DateTimeFilter<"PropostaArtista"> | Date | string
@@ -6066,6 +6081,7 @@ export namespace Prisma {
   export type PropostaArtistaOrderByWithRelationInput = {
     id_proposta_artista?: SortOrder
     id_casa?: SortOrder
+    id_artista?: SortOrderInput | SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6084,6 +6100,7 @@ export namespace Prisma {
     OR?: PropostaArtistaWhereInput[]
     NOT?: PropostaArtistaWhereInput | PropostaArtistaWhereInput[]
     id_casa?: StringFilter<"PropostaArtista"> | string
+    id_artista?: StringNullableFilter<"PropostaArtista"> | string | null
     id_evento?: StringFilter<"PropostaArtista"> | string
     data_proposta?: DateTimeFilter<"PropostaArtista"> | Date | string
     data_evento?: DateTimeFilter<"PropostaArtista"> | Date | string
@@ -6099,6 +6116,7 @@ export namespace Prisma {
   export type PropostaArtistaOrderByWithAggregationInput = {
     id_proposta_artista?: SortOrder
     id_casa?: SortOrder
+    id_artista?: SortOrderInput | SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6119,6 +6137,7 @@ export namespace Prisma {
     NOT?: PropostaArtistaScalarWhereWithAggregatesInput | PropostaArtistaScalarWhereWithAggregatesInput[]
     id_proposta_artista?: StringWithAggregatesFilter<"PropostaArtista"> | string
     id_casa?: StringWithAggregatesFilter<"PropostaArtista"> | string
+    id_artista?: StringNullableWithAggregatesFilter<"PropostaArtista"> | string | null
     id_evento?: StringWithAggregatesFilter<"PropostaArtista"> | string
     data_proposta?: DateTimeWithAggregatesFilter<"PropostaArtista"> | Date | string
     data_evento?: DateTimeWithAggregatesFilter<"PropostaArtista"> | Date | string
@@ -6397,6 +6416,7 @@ export namespace Prisma {
   export type PropostaArtistaCreateInput = {
     id_proposta_artista?: string
     id_casa: string
+    id_artista?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -6411,6 +6431,7 @@ export namespace Prisma {
   export type PropostaArtistaUncheckedCreateInput = {
     id_proposta_artista?: string
     id_casa: string
+    id_artista?: string | null
     id_evento: string
     data_proposta: Date | string
     data_evento: Date | string
@@ -6425,6 +6446,7 @@ export namespace Prisma {
   export type PropostaArtistaUpdateInput = {
     id_proposta_artista?: StringFieldUpdateOperationsInput | string
     id_casa?: StringFieldUpdateOperationsInput | string
+    id_artista?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -6439,6 +6461,7 @@ export namespace Prisma {
   export type PropostaArtistaUncheckedUpdateInput = {
     id_proposta_artista?: StringFieldUpdateOperationsInput | string
     id_casa?: StringFieldUpdateOperationsInput | string
+    id_artista?: NullableStringFieldUpdateOperationsInput | string | null
     id_evento?: StringFieldUpdateOperationsInput | string
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6453,6 +6476,7 @@ export namespace Prisma {
   export type PropostaArtistaCreateManyInput = {
     id_proposta_artista?: string
     id_casa: string
+    id_artista?: string | null
     id_evento: string
     data_proposta: Date | string
     data_evento: Date | string
@@ -6467,6 +6491,7 @@ export namespace Prisma {
   export type PropostaArtistaUpdateManyMutationInput = {
     id_proposta_artista?: StringFieldUpdateOperationsInput | string
     id_casa?: StringFieldUpdateOperationsInput | string
+    id_artista?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -6480,6 +6505,7 @@ export namespace Prisma {
   export type PropostaArtistaUncheckedUpdateManyInput = {
     id_proposta_artista?: StringFieldUpdateOperationsInput | string
     id_casa?: StringFieldUpdateOperationsInput | string
+    id_artista?: NullableStringFieldUpdateOperationsInput | string | null
     id_evento?: StringFieldUpdateOperationsInput | string
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6779,6 +6805,7 @@ export namespace Prisma {
   export type PropostaArtistaCountOrderByAggregateInput = {
     id_proposta_artista?: SortOrder
     id_casa?: SortOrder
+    id_artista?: SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6793,6 +6820,7 @@ export namespace Prisma {
   export type PropostaArtistaMaxOrderByAggregateInput = {
     id_proposta_artista?: SortOrder
     id_casa?: SortOrder
+    id_artista?: SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6807,6 +6835,7 @@ export namespace Prisma {
   export type PropostaArtistaMinOrderByAggregateInput = {
     id_proposta_artista?: SortOrder
     id_casa?: SortOrder
+    id_artista?: SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -7182,6 +7211,7 @@ export namespace Prisma {
   export type PropostaArtistaCreateWithoutEventoInput = {
     id_proposta_artista?: string
     id_casa: string
+    id_artista?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -7195,6 +7225,7 @@ export namespace Prisma {
   export type PropostaArtistaUncheckedCreateWithoutEventoInput = {
     id_proposta_artista?: string
     id_casa: string
+    id_artista?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -7299,6 +7330,7 @@ export namespace Prisma {
     NOT?: PropostaArtistaScalarWhereInput | PropostaArtistaScalarWhereInput[]
     id_proposta_artista?: StringFilter<"PropostaArtista"> | string
     id_casa?: StringFilter<"PropostaArtista"> | string
+    id_artista?: StringNullableFilter<"PropostaArtista"> | string | null
     id_evento?: StringFilter<"PropostaArtista"> | string
     data_proposta?: DateTimeFilter<"PropostaArtista"> | Date | string
     data_evento?: DateTimeFilter<"PropostaArtista"> | Date | string
@@ -7583,6 +7615,7 @@ export namespace Prisma {
   export type PropostaArtistaCreateManyEventoInput = {
     id_proposta_artista?: string
     id_casa: string
+    id_artista?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -7642,6 +7675,7 @@ export namespace Prisma {
   export type PropostaArtistaUpdateWithoutEventoInput = {
     id_proposta_artista?: StringFieldUpdateOperationsInput | string
     id_casa?: StringFieldUpdateOperationsInput | string
+    id_artista?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -7655,6 +7689,7 @@ export namespace Prisma {
   export type PropostaArtistaUncheckedUpdateWithoutEventoInput = {
     id_proposta_artista?: StringFieldUpdateOperationsInput | string
     id_casa?: StringFieldUpdateOperationsInput | string
+    id_artista?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -7668,6 +7703,7 @@ export namespace Prisma {
   export type PropostaArtistaUncheckedUpdateManyWithoutEventoInput = {
     id_proposta_artista?: StringFieldUpdateOperationsInput | string
     id_casa?: StringFieldUpdateOperationsInput | string
+    id_artista?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string

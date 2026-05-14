@@ -6,6 +6,7 @@ export async function criarPropostaCasa(dados: PropostaCasaDTO) {
     data: {
       id_proposta_casa: dados.id_proposta_casa,
       id_artista: dados.id_artista,
+      id_casa_show: dados.id_casa_show,
       id_evento: dados.id_evento,
       data_proposta: dados.data_proposta,
       data_evento: dados.data_evento,
@@ -36,6 +37,7 @@ export async function listarPropostaCasa({
   return propostaCasa.map((e: any) => ({
     id_proposta_casa: e.id_proposta_casa,
     id_artista: e.id_artista,
+    id_casa_show: e.id_casa_show,
     id_evento: e.id_evento,
     data_proposta: e.data_proposta,
     data_evento: e.data_evento,
@@ -75,6 +77,7 @@ export async function atualizarPropostaCasa(
       id_proposta_casa:
         dados.id_proposta_casa ?? propostaCasaExistente.id_proposta_casa,
       id_artista: dados.id_artista ?? propostaCasaExistente.id_artista,
+      id_casa_show: dados.id_casa_show ?? propostaCasaExistente.id_casa_show,
       id_evento: dados.id_evento ?? propostaCasaExistente.id_evento,
       data_proposta: dados.data_proposta ?? propostaCasaExistente.data_proposta,
       data_evento: dados.data_evento ?? propostaCasaExistente.data_evento,
@@ -111,4 +114,48 @@ export async function deletarPropostaCasa(id: string) {
   return {
     message: "Proposta casa deletada com sucesso",
   };
+}
+
+export async function buscarPropostasCasaPorIdCasaShow(id_casa_show: string) {
+  const propostas = await prisma.propostaCasa.findMany({
+    where: { id_casa_show },
+  });
+
+  if (!propostas.length) {
+    return null;
+  }
+
+  return propostas.map((e: any) => ({
+    id_proposta_casa: e.id_proposta_casa,
+    id_artista: e.id_artista,
+    id_casa_show: e.id_casa_show,
+    id_evento: e.id_evento,
+    data_proposta: e.data_proposta,
+    data_evento: e.data_evento,
+    valor_ofertado: e.valor_ofertado,
+    status: e.status,
+    termos: e.termos,
+  }));
+}
+
+export async function buscarPropostasCasaPorIdArtista(id_artista: string) {
+  const propostas = await prisma.propostaCasa.findMany({
+    where: { id_artista },
+  });
+
+  if (!propostas.length) {
+    return null;
+  }
+
+  return propostas.map((e: any) => ({
+    id_proposta_casa: e.id_proposta_casa,
+    id_artista: e.id_artista,
+    id_casa_show: e.id_casa_show,
+    id_evento: e.id_evento,
+    data_proposta: e.data_proposta,
+    data_evento: e.data_evento,
+    valor_ofertado: e.valor_ofertado,
+    status: e.status,
+    termos: e.termos,
+  }));
 }
