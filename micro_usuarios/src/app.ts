@@ -20,11 +20,12 @@ app.use(
       "http://localhost:3002",
       "http://localhost:3003",
       "http://localhost:8081",
+      "https://night-out-api-usuarios.onrender.com",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     optionsSuccessStatus: 200,
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
