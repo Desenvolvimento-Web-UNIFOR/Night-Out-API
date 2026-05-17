@@ -249,8 +249,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.17.0
-   * Query Engine version: c0aafc03b8ef6cdced8654b9a817999e02457d6a
+   * Prisma Client JS version: 6.16.2
+   * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
    */
   export type PrismaVersion = {
     client: string
@@ -2385,6 +2385,7 @@ export namespace Prisma {
   export type PropostaCasaMinAggregateOutputType = {
     id_proposta_casa: string | null
     id_artista: string | null
+    id_casa_show: string | null
     id_evento: string | null
     data_proposta: Date | null
     data_evento: Date | null
@@ -2398,6 +2399,7 @@ export namespace Prisma {
   export type PropostaCasaMaxAggregateOutputType = {
     id_proposta_casa: string | null
     id_artista: string | null
+    id_casa_show: string | null
     id_evento: string | null
     data_proposta: Date | null
     data_evento: Date | null
@@ -2411,6 +2413,7 @@ export namespace Prisma {
   export type PropostaCasaCountAggregateOutputType = {
     id_proposta_casa: number
     id_artista: number
+    id_casa_show: number
     id_evento: number
     data_proposta: number
     data_evento: number
@@ -2426,6 +2429,7 @@ export namespace Prisma {
   export type PropostaCasaMinAggregateInputType = {
     id_proposta_casa?: true
     id_artista?: true
+    id_casa_show?: true
     id_evento?: true
     data_proposta?: true
     data_evento?: true
@@ -2439,6 +2443,7 @@ export namespace Prisma {
   export type PropostaCasaMaxAggregateInputType = {
     id_proposta_casa?: true
     id_artista?: true
+    id_casa_show?: true
     id_evento?: true
     data_proposta?: true
     data_evento?: true
@@ -2452,6 +2457,7 @@ export namespace Prisma {
   export type PropostaCasaCountAggregateInputType = {
     id_proposta_casa?: true
     id_artista?: true
+    id_casa_show?: true
     id_evento?: true
     data_proposta?: true
     data_evento?: true
@@ -2538,6 +2544,7 @@ export namespace Prisma {
   export type PropostaCasaGroupByOutputType = {
     id_proposta_casa: string
     id_artista: string
+    id_casa_show: string | null
     id_evento: string
     data_proposta: Date
     data_evento: Date
@@ -2568,6 +2575,7 @@ export namespace Prisma {
   export type PropostaCasaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_proposta_casa?: boolean
     id_artista?: boolean
+    id_casa_show?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -2582,6 +2590,7 @@ export namespace Prisma {
   export type PropostaCasaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_proposta_casa?: boolean
     id_artista?: boolean
+    id_casa_show?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -2596,6 +2605,7 @@ export namespace Prisma {
   export type PropostaCasaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_proposta_casa?: boolean
     id_artista?: boolean
+    id_casa_show?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -2610,6 +2620,7 @@ export namespace Prisma {
   export type PropostaCasaSelectScalar = {
     id_proposta_casa?: boolean
     id_artista?: boolean
+    id_casa_show?: boolean
     id_evento?: boolean
     data_proposta?: boolean
     data_evento?: boolean
@@ -2620,7 +2631,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PropostaCasaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_proposta_casa" | "id_artista" | "id_evento" | "data_proposta" | "data_evento" | "valor_ofertado" | "status" | "termos" | "createdAt" | "updatedAt", ExtArgs["result"]["propostaCasa"]>
+  export type PropostaCasaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_proposta_casa" | "id_artista" | "id_casa_show" | "id_evento" | "data_proposta" | "data_evento" | "valor_ofertado" | "status" | "termos" | "createdAt" | "updatedAt", ExtArgs["result"]["propostaCasa"]>
   export type PropostaCasaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evento?: boolean | EventoDefaultArgs<ExtArgs>
   }
@@ -2639,6 +2650,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id_proposta_casa: string
       id_artista: string
+      id_casa_show: string | null
       id_evento: string
       data_proposta: Date
       data_evento: Date
@@ -3073,6 +3085,7 @@ export namespace Prisma {
   interface PropostaCasaFieldRefs {
     readonly id_proposta_casa: FieldRef<"PropostaCasa", 'String'>
     readonly id_artista: FieldRef<"PropostaCasa", 'String'>
+    readonly id_casa_show: FieldRef<"PropostaCasa", 'String'>
     readonly id_evento: FieldRef<"PropostaCasa", 'String'>
     readonly data_proposta: FieldRef<"PropostaCasa", 'DateTime'>
     readonly data_evento: FieldRef<"PropostaCasa", 'DateTime'>
@@ -5774,6 +5787,7 @@ export namespace Prisma {
   export const PropostaCasaScalarFieldEnum: {
     id_proposta_casa: 'id_proposta_casa',
     id_artista: 'id_artista',
+    id_casa_show: 'id_casa_show',
     id_evento: 'id_evento',
     data_proposta: 'data_proposta',
     data_evento: 'data_evento',
@@ -5985,6 +5999,7 @@ export namespace Prisma {
     NOT?: PropostaCasaWhereInput | PropostaCasaWhereInput[]
     id_proposta_casa?: StringFilter<"PropostaCasa"> | string
     id_artista?: StringFilter<"PropostaCasa"> | string
+    id_casa_show?: StringNullableFilter<"PropostaCasa"> | string | null
     id_evento?: StringFilter<"PropostaCasa"> | string
     data_proposta?: DateTimeFilter<"PropostaCasa"> | Date | string
     data_evento?: DateTimeFilter<"PropostaCasa"> | Date | string
@@ -5999,6 +6014,7 @@ export namespace Prisma {
   export type PropostaCasaOrderByWithRelationInput = {
     id_proposta_casa?: SortOrder
     id_artista?: SortOrder
+    id_casa_show?: SortOrderInput | SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6016,6 +6032,7 @@ export namespace Prisma {
     OR?: PropostaCasaWhereInput[]
     NOT?: PropostaCasaWhereInput | PropostaCasaWhereInput[]
     id_artista?: StringFilter<"PropostaCasa"> | string
+    id_casa_show?: StringNullableFilter<"PropostaCasa"> | string | null
     id_evento?: StringFilter<"PropostaCasa"> | string
     data_proposta?: DateTimeFilter<"PropostaCasa"> | Date | string
     data_evento?: DateTimeFilter<"PropostaCasa"> | Date | string
@@ -6030,6 +6047,7 @@ export namespace Prisma {
   export type PropostaCasaOrderByWithAggregationInput = {
     id_proposta_casa?: SortOrder
     id_artista?: SortOrder
+    id_casa_show?: SortOrderInput | SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6049,6 +6067,7 @@ export namespace Prisma {
     NOT?: PropostaCasaScalarWhereWithAggregatesInput | PropostaCasaScalarWhereWithAggregatesInput[]
     id_proposta_casa?: StringWithAggregatesFilter<"PropostaCasa"> | string
     id_artista?: StringWithAggregatesFilter<"PropostaCasa"> | string
+    id_casa_show?: StringNullableWithAggregatesFilter<"PropostaCasa"> | string | null
     id_evento?: StringWithAggregatesFilter<"PropostaCasa"> | string
     data_proposta?: DateTimeWithAggregatesFilter<"PropostaCasa"> | Date | string
     data_evento?: DateTimeWithAggregatesFilter<"PropostaCasa"> | Date | string
@@ -6326,6 +6345,7 @@ export namespace Prisma {
   export type PropostaCasaCreateInput = {
     id_proposta_casa?: string
     id_artista: string
+    id_casa_show?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -6339,6 +6359,7 @@ export namespace Prisma {
   export type PropostaCasaUncheckedCreateInput = {
     id_proposta_casa?: string
     id_artista: string
+    id_casa_show?: string | null
     id_evento: string
     data_proposta: Date | string
     data_evento: Date | string
@@ -6352,6 +6373,7 @@ export namespace Prisma {
   export type PropostaCasaUpdateInput = {
     id_proposta_casa?: StringFieldUpdateOperationsInput | string
     id_artista?: StringFieldUpdateOperationsInput | string
+    id_casa_show?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -6365,6 +6387,7 @@ export namespace Prisma {
   export type PropostaCasaUncheckedUpdateInput = {
     id_proposta_casa?: StringFieldUpdateOperationsInput | string
     id_artista?: StringFieldUpdateOperationsInput | string
+    id_casa_show?: NullableStringFieldUpdateOperationsInput | string | null
     id_evento?: StringFieldUpdateOperationsInput | string
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6378,6 +6401,7 @@ export namespace Prisma {
   export type PropostaCasaCreateManyInput = {
     id_proposta_casa?: string
     id_artista: string
+    id_casa_show?: string | null
     id_evento: string
     data_proposta: Date | string
     data_evento: Date | string
@@ -6391,6 +6415,7 @@ export namespace Prisma {
   export type PropostaCasaUpdateManyMutationInput = {
     id_proposta_casa?: StringFieldUpdateOperationsInput | string
     id_artista?: StringFieldUpdateOperationsInput | string
+    id_casa_show?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -6403,6 +6428,7 @@ export namespace Prisma {
   export type PropostaCasaUncheckedUpdateManyInput = {
     id_proposta_casa?: StringFieldUpdateOperationsInput | string
     id_artista?: StringFieldUpdateOperationsInput | string
+    id_casa_show?: NullableStringFieldUpdateOperationsInput | string | null
     id_evento?: StringFieldUpdateOperationsInput | string
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6766,6 +6792,7 @@ export namespace Prisma {
   export type PropostaCasaCountOrderByAggregateInput = {
     id_proposta_casa?: SortOrder
     id_artista?: SortOrder
+    id_casa_show?: SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6779,6 +6806,7 @@ export namespace Prisma {
   export type PropostaCasaMaxOrderByAggregateInput = {
     id_proposta_casa?: SortOrder
     id_artista?: SortOrder
+    id_casa_show?: SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -6792,6 +6820,7 @@ export namespace Prisma {
   export type PropostaCasaMinOrderByAggregateInput = {
     id_proposta_casa?: SortOrder
     id_artista?: SortOrder
+    id_casa_show?: SortOrder
     id_evento?: SortOrder
     data_proposta?: SortOrder
     data_evento?: SortOrder
@@ -7177,6 +7206,7 @@ export namespace Prisma {
   export type PropostaCasaCreateWithoutEventoInput = {
     id_proposta_casa?: string
     id_artista: string
+    id_casa_show?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -7189,6 +7219,7 @@ export namespace Prisma {
   export type PropostaCasaUncheckedCreateWithoutEventoInput = {
     id_proposta_casa?: string
     id_artista: string
+    id_casa_show?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -7298,6 +7329,7 @@ export namespace Prisma {
     NOT?: PropostaCasaScalarWhereInput | PropostaCasaScalarWhereInput[]
     id_proposta_casa?: StringFilter<"PropostaCasa"> | string
     id_artista?: StringFilter<"PropostaCasa"> | string
+    id_casa_show?: StringNullableFilter<"PropostaCasa"> | string | null
     id_evento?: StringFilter<"PropostaCasa"> | string
     data_proposta?: DateTimeFilter<"PropostaCasa"> | Date | string
     data_evento?: DateTimeFilter<"PropostaCasa"> | Date | string
@@ -7603,6 +7635,7 @@ export namespace Prisma {
   export type PropostaCasaCreateManyEventoInput = {
     id_proposta_casa?: string
     id_artista: string
+    id_casa_show?: string | null
     data_proposta: Date | string
     data_evento: Date | string
     valor_ofertado: string
@@ -7639,6 +7672,7 @@ export namespace Prisma {
   export type PropostaCasaUpdateWithoutEventoInput = {
     id_proposta_casa?: StringFieldUpdateOperationsInput | string
     id_artista?: StringFieldUpdateOperationsInput | string
+    id_casa_show?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -7651,6 +7685,7 @@ export namespace Prisma {
   export type PropostaCasaUncheckedUpdateWithoutEventoInput = {
     id_proposta_casa?: StringFieldUpdateOperationsInput | string
     id_artista?: StringFieldUpdateOperationsInput | string
+    id_casa_show?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string
@@ -7663,6 +7698,7 @@ export namespace Prisma {
   export type PropostaCasaUncheckedUpdateManyWithoutEventoInput = {
     id_proposta_casa?: StringFieldUpdateOperationsInput | string
     id_artista?: StringFieldUpdateOperationsInput | string
+    id_casa_show?: NullableStringFieldUpdateOperationsInput | string | null
     data_proposta?: DateTimeFieldUpdateOperationsInput | Date | string
     data_evento?: DateTimeFieldUpdateOperationsInput | Date | string
     valor_ofertado?: StringFieldUpdateOperationsInput | string

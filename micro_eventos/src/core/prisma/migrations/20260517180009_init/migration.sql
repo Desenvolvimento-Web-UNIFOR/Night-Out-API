@@ -18,6 +18,7 @@ CREATE TABLE "public"."Evento" (
 CREATE TABLE "public"."PropostaCasa" (
     "id_proposta_casa" TEXT NOT NULL,
     "id_artista" TEXT NOT NULL,
+    "id_casa_show" TEXT,
     "id_evento" TEXT NOT NULL,
     "data_proposta" TIMESTAMP(3) NOT NULL,
     "data_evento" TIMESTAMP(3) NOT NULL,
@@ -34,12 +35,14 @@ CREATE TABLE "public"."PropostaCasa" (
 CREATE TABLE "public"."PropostaArtista" (
     "id_proposta_artista" TEXT NOT NULL,
     "id_casa" TEXT NOT NULL,
+    "id_artista" TEXT,
     "id_evento" TEXT NOT NULL,
     "data_proposta" TIMESTAMP(3) NOT NULL,
     "data_evento" TIMESTAMP(3) NOT NULL,
     "valor_ofertado" TEXT NOT NULL,
     "status" TEXT NOT NULL,
     "termos" TEXT,
+    "aceito" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
