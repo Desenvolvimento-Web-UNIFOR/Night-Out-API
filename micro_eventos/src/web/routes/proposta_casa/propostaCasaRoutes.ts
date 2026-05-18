@@ -4,6 +4,8 @@ import {
     listarPropostaCasa,
     buscarPropostaCasaPorId,
     editarPropostaCasa,
+    buscarPropostaCasaPorIdCasaShow,
+    buscarPropostaCasaPorIdArtista
 } from "../../controller/proposta_casa/propostaCasaLCController";
 
 const PropostaCasaRoutes = Router();
@@ -12,5 +14,7 @@ PropostaCasaRoutes.post("/", criarPropostaCasa);
 PropostaCasaRoutes.get("/", listarPropostaCasa);
 PropostaCasaRoutes.get("/:id", buscarPropostaCasaPorId);
 PropostaCasaRoutes.put("/:id", editarPropostaCasa);
+PropostaCasaRoutes.get("/casa/:idCasaShow", buscarPropostaCasaPorIdCasaShow);
+PropostaCasaRoutes.get("/artista/:idArtista", buscarPropostaCasaPorIdArtista);
 
 export default PropostaCasaRoutes;

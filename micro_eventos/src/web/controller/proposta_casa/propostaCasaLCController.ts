@@ -64,3 +64,35 @@ export const editarPropostaCasa: RequestHandler = async (req, res) => {
     res.status(500).json({ message: `Erro ao editar proposta casa: ${e}` });
   }
 };
+
+export const buscarPropostaCasaPorIdCasaShow: RequestHandler = async (req, res) => {
+  try {
+    const { idCasaShow } = req.params;
+    const propostas = await propostaCasaService.buscarPropostasCasaPorIdCasaShow(idCasaShow);
+
+    if (!propostas) {
+      res.status(404).json({ message: "Nenhuma proposta encontrada para a casa de show fornecida" });
+      return;
+    }
+
+    res.status(200).json(propostas);
+  } catch (e) {
+    res.status(500).json({ message: `Erro ao buscar propostas por ID casa de show: ${e}` });
+  }
+};
+
+export const buscarPropostaCasaPorIdArtista: RequestHandler = async (req, res) => {
+  try {
+    const { idArtista } = req.params;
+    const propostas = await propostaCasaService.buscarPropostasCasaPorIdArtista(idArtista);
+
+    if (!propostas) {
+      res.status(404).json({ message: "Nenhuma proposta encontrada para o artista fornecido" });
+      return;
+    }
+
+    res.status(200).json(propostas);
+  } catch (e) {
+    res.status(500).json({ message: `Erro ao buscar propostas por ID artista: ${e}` });
+  }
+};
