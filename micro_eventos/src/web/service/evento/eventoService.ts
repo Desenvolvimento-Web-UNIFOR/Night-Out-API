@@ -11,6 +11,7 @@ export async function criarEvento(dados: EventoDTO) {
       data_fim: dados.data_fim,
       local: dados.local,
       status: dados.status ?? "DISPONÍVEL",
+      genero: dados.genero ?? null,
     },
   });
 
@@ -40,6 +41,7 @@ export async function listarEvento({
     data_inicio: e.data_inicio,
     data_fim: e.data_fim,
     local: e.local,
+    genero: e.genero,
   }));
 }
 
@@ -54,6 +56,7 @@ export async function buscarEventoPorId(id: string) {
 
   return evento;
 }
+
 
 export async function atualizarEvento(id: string, dados: Partial<EventoDTO>) {
   const eventoAtualizado = await prisma.evento.update({
