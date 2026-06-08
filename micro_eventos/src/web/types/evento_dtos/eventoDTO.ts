@@ -10,6 +10,7 @@ export interface EventoDTO {
   data_fim: Date;
   local: string;
   status: string;
+  genero: string;
 
   propostasCasa: PropostaCasaDTO[];
   propostasArtista: PropostaArtistaDTO[];
